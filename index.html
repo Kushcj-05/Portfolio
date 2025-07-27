@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kush - Designer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .bgvideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 65%;
+        }
+
+        .bgvideo video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        body {
+            background-color: rgb(0, 0, 0);
+            color: #c5c6c7;
+            font-family: 'Poppins', sans-serif;
+            padding-top: 80px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 80px;
+            background-color: #27292b;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 32px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #c5c6c7;
+        }
+
+        nav ul li a:hover {
+            color: aqua;
+            font-size: 1.01rem;
+        }
+
+        .left {
+            color: aqua;
+            font-size: 1.7rem;
+        }
+
+        .right {
+            padding-left: 300px;
+        }
+
+        .firstsection {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 90px 0;
+        }
+
+        .firstsection>div {
+            width: 30%;
+        }
+
+        .leftsection {
+            font-size: 2.5rem;
+        }
+
+        .rightsection {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rightsection img {
+            width: 80%;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .rightsection:hover img {
+            transform: scale(1.02);
+        }
+
+        .rightsection::before {
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 132%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, rgba(255, 255, 255, 0.15) 30%, transparent 60%);
+            z-index: 0;
+            filter: blur(30px);
+            opacity: 0.5;
+            transition: opacity 0.5s ease, transform 1s ease;
+        }
+
+        .rightsection:hover::before {
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
+        .aqua {
+            color: aqua;
+        }
+
+        #element {
+            color: aqua;
+        }
+
+        main hr {
+            border: 0;
+            background-color: whitesmoke;
+            height: 1.2px;
+            margin: 30px 80px;
+        }
+
+        .text-gray {
+            color: rgb(104, 101, 101);
+            font-size: 0.9rem;
+        }
+
+        .secondsection {
+            max-width: 80vw;
+            margin: auto;
+            height: 80vh;
+        }
+
+        .secondsection h1 {
+            font-size: 1.9rem;
+            margin: auto;
+        }
+
+        .secondsection .box {
+            background: whitesmoke;
+            width: 70vw;
+            height: 2px;
+            margin: 120px 0;
+            display: flex;
+        }
+
+        .secondsection .vertical {
+            height: 93px;
+            width: 1px;
+            background-color: whitesmoke;
+            margin: 0 170px;
+        }
+
+        .vertical-title,
+        .vertical-title2,
+        .vertical-title3 {
+            position: relative;
+            top: 10px;
+            width: 190px;
+        }
+
+        .vertical-desc,
+        .vertical-desc2,
+        .vertical-desc3 {
+            position: relative;
+            top: 15px;
+            width: 150px;
+            color: rgb(104, 101, 101);
+            font-size: 12px;
+        }
+
+        /* Position tweaks */
+        .vertical .image-top {
+            width: 150px;
+            height: auto;
+            position: relative;
+            top: -100px;
+            left: -70px;
+        }
+
+        .vertical .image-top2 {
+            width: 90px;
+            height: auto;
+            position: relative;
+            top: -95px;
+            left: -40px;
+        }
+
+        .vertical .image-top3 {
+            width: 200px;
+            height: auto;
+            position: relative;
+            top: -148px;
+            left: -95px;
+        }
+
+        .vertical-title3 {
+            top: -90px;
+        }
+
+        .vertical-desc3 {
+            top: -85px;
+        }
+
+        /* FOG Hover Effects */
+        .fog-container {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .fog-container::before {
+            content: "";
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 80%);
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.2;
+            transition: opacity 0.4s ease, transform 0.6s ease;
+            filter: blur(25px);
+            z-index: 0;
+        }
+
+        .fog-container:hover::before {  
+            opacity: 0.9;
+            transform: translate(-50%, -50%) scale(1.3);
+        }
+
+        .fog-container img {
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+
+        .fog-container:hover img {
+            transform: scale(1.1);
+        }
+        footer {
+      background-color: #1e1e1e;
+      padding: 40px 20px;
+      color: #c5c6c7;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 60px;
+    }
+
+    footer .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    footer h2{
+      color: aqua;
+      position: relative;
+      left: 5%;
+    }
+    footer h4{
+        color: aqua;
+    }
+
+    footer a {
+      color: #c5c6c7;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: aqua;
+    }
+
+    footer .hficon {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    footer hr {
+      border: none;
+      border-top: 1px solid #444;
+      margin: 30px 0;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="bgvideo">
+        <video src="bgvideo.mp4" muted loop autoplay playsinline></video>
+    </div>
+    <header>
+        <nav>
+            <div class="left">Kush's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="design.html">Designs</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="firstsection">
+            <div class="leftsection">
+                Hi, I'm <span class="aqua">Kushal C J</span>
+                <div>and I am a passionate</div>
+                <span id="element"></span>
+            </div>
+            <div class="rightsection">
+                <img src="icons/kushimg.png" alt="Kushal Image">
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="secondsection">
+            <span class="text-gray">What I have done so far</span>
+            <h1>Past Experience</h1>
+            <div class="box">
+                <div class="vertical">
+                    <div class="fog-container">
+                        <img class="image-top" src="icons/dot.png" alt="Dot">
+                    </div>
+                    <div class="vertical-title">
+                        => Digital and Media Director(2024-Present)<br>
+                        => Student Member(2022-2024)
+                    </div>
+                    <div class="vertical-desc">
+Started as a student member of the DevOps Club and gradually took on greater responsibilities. Currently serving as the Digital and Media Director, handling all design, branding, and content for the club’s events and promotions
+                    </div>
+                </div>
+
+                <div class="vertical">
+                    <div class="fog-container">
+                        <img class="image-top2" src="icons/yt icon.png" alt="YouTube">
+                    </div>
+                    <div class="vertical-title2">
+                        Thumbnail Designer & Video Editor (2021-2023)
+                    </div>
+                    <div class="vertical-desc2">
+                        Collaborated with YouTube creators to design engaging thumbnails, video edits, and channel branding. Helped enhance viewer engagement and maintain a consistent visual style across content.
+                    </div>
+                </div>
+
+                <div class="vertical">
+                    <div class="fog-container">
+                        <img class="image-top3" src="icons/freelanlogo.png" alt="Freelancer">
+                    </div>
+                    <div class="vertical-title3">
+                        Freelancer (Part-time)
+                    </div>
+                    <div class="vertical-desc3">
+                        Worked as a freelance designer and video editor, delivering creative solutions for clients across various industries. Handled branding, social media content, and promotional videos tailored to client needs.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Typed animation script -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Graphic Designer', 'Web Designer', 'Front-end Developer', 'Video Editor'],
+            typeSpeed: 50,
+            backSpeed: 20,
+            backDelay: 1500,
+            loop: true,
+            smartBackspace: true,
+            showCursor: true,
+        });
+    </script>
+    <div>
+        <footer>
+            <div class="footer-container">
+              <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+                <h2>Kushal C J</h2>
+                <p style="font-size: 0.9rem; color: #a0a0a0;">Creative Designer & Developer | Turning ideas into visuals.</p>
+              </div>
+        
+              <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h4>Quick Links</h4>
+                <ul style="list-style: none; padding: 0;">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="skills.html">Skills</a></li>
+                  <li><a href="design.html">Designs</a></li>
+                  <li><a href="projects.html">Projects</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+        
+              <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h4>Connect with me</h4>
+                <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
+                  <a href="https://www.instagram.com/kushxdiaries/" target="_blank"><img src="icons/ig icon.png" class="hficon">Instagram</a>
+                  <a href="https://www.linkedin.com/in/kushal-c-j-454b7b267/" target="_blank"><img src="icons/lkn icon.png" class="hficon">LinkedIn</a>
+                  <a href="mailto:kushalhsncj@gmail.com"><img src="icons/email logo.png" class="hficon">Email</a>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <p>&copy; 2025 Kushal C J. All rights reserved.</p>
+          </footer>
+        </body>
+        
+        </html>
+        
+        
+        <!-- Font Awesome CDN for icons -->
+        <script src="https://kit.fontawesome.com/your_kit_id.js" crossorigin="anonymous"></script>
+     
+    </div>
+</body>
+
+</html>

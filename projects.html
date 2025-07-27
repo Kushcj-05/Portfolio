@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects - Kush</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #f0f0f0;
+      background-color: #000;
+      overflow-x: hidden;
+    }
+
+    .bgvideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -2;
+    }
+
+    .bgvideo video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0.45;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 80px;
+      background-color: #27292b;
+      z-index: 10;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      list-style: none;
+      margin: 0 32px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #c5c6c7;
+    }
+
+    nav ul li a:hover {
+      color: aqua;
+      font-size: 1.01rem;
+    }
+
+    .left {
+      color: aqua;
+      font-size: 1.7rem;
+    }
+
+    .right {
+      padding-left: 300px;
+    }
+
+    .projects-section {
+      max-width: 1200px;
+      margin: 120px auto 60px;
+      padding: 0 30px;
+    }
+
+    .projects-section h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 50px;
+      color: aqua;
+      letter-spacing: 2px;
+    }
+
+    .project-card {
+      background: rgba(40, 40, 40, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+      border: 2px solid rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .project-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-image {
+      flex: 1;
+      min-width: 250px;
+      max-width: 400px;
+      height: 200px;
+      background-color: #111;
+      border-radius: 15px;
+      background-image: url('project-placeholder.jpg'); /* Replace with actual project image */
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .project-content {
+      flex: 2;
+      min-width: 260px;
+    }
+
+    .project-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: aqua;
+    }
+
+    .project-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .project-content a {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: aqua;
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .project-content a:hover {
+      background-color: #00ffffcc;
+    }
+
+    footer {
+      background-color: #1e1e1e;
+      padding: 40px 20px;
+      color: #c5c6c7;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 60px;
+    }
+
+    footer .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    footer h2 {
+      color: aqua;
+      position: relative;
+      left: 5%;
+    }
+
+    footer h4 {
+      color: aqua;
+    }
+
+    footer a {
+      color: #c5c6c7;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: aqua;
+    }
+
+    footer .hficon {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    footer hr {
+      border: none;
+      border-top: 1px solid #444;
+      margin: 30px 0;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    @media (max-width: 768px) {
+      .right {
+        padding-left: 0;
+      }
+
+      .project-card {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bgvideo">
+    <video src="bgvideo.mp4" muted loop autoplay playsinline></video>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="left">Kush's Portfolio</div>
+    <div class="right">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="design.html">Designs</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Projects Section -->
+  <section class="projects-section">
+    <h1>My Projects</h1>
+    
+   <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/video.jpeg');"></div>
+      <div class="project-content">
+        <h2>CINEMATIC SHOWREEL (VIDEO WORKS) </h2>
+        <p>
+          A personal video editing featuring dramatic transitions, color grading, and storytelling shots. Edited
+          using Adobe Premiere Pro, Davinci resolve, After Effects etc. with sound design and pacing optimization.
+        </p>
+        <a href="https://drive.google.com/drive/folders/1PxUclicrvSXFY8uBNi20W4lOUATME-17" target="_blank">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/dotweb.png');"></div>
+      <div class="project-content">
+        <h2>DOT Website - Frontend Development</h2>
+        <p>
+          As part of the Frontend Team, I contributed to designing and developing a visually appealing and fully responsive website for the DevOps Club. The project focused on delivering a smooth user experience across all devices while aligning with the club’s tech-driven identity. From layout design to UI components, I played a key role in crafting the interface that reflects both creativity and functionality.
+        </p>
+        <a href="https://www.devopsmalnad.com" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/disc.png');"></div>
+      <div class="project-content">
+        <h2>DISC Personality Test</h2>
+        <p>
+          A web app that helps users discover their behavioral traits using the DISC model. Offers real-time analysis,
+          reports, and visual insights based on quiz results. Designed with user experience and clarity in mind.
+        </p>
+        <a href="https://www.linkedin.com/posts/devops-team-mce_disc-personality-test-excited-to-announce-activity-7242819464335925248-u71u?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEF9t8ABa2xZWQR1rTvH3Q9XPtrDU7BgJh8" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/survey.jpg');"></div>
+      <div class="project-content">
+        <h2>SURVEY DRAWINGS & PLANS</h2>
+        <p>
+          A precise and detailed representation of surveyed land, showcasing topographical features, elevations, and boundaries. 
+          Developed using AutoCAD and Civil 3D, the drawing emphasizes accuracy, clarity, and technical standards essential for site planning and construction.
+        </p>
+        <a href="https://drive.google.com/drive/folders/1Nt_Dc2ZGOAJ40lxkOjC5Tny9mo3qoKx_" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/revit.jpg');"></div>
+      <div class="project-content">
+        <h2>REVIT DRAWINGS</h2>
+        <p>
+          A collection of detailed architectural and structural models created using Autodesk Revit. These drawings showcase intelligent 3D components, 
+          precise floor plans, sections, and elevations — blending design visualization with real-time data for construction-ready documentation.
+        </p>
+        <a href="https://drive.google.com/drive/folders/1ED_-ErMz6xLUo2tYDHZU0r8HHzexhO02" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/tumbnali.jpg');"></div>
+      <div class="project-content">
+        <h2>THUMBNAIL DESIGN</h2>
+        <p>
+          Crafted engaging and high-conversion YouTube thumbnails for Harshith's channel, blending bold typography, expressive visuals, and vibrant color schemes.
+           Each design was tailored to maximize click-through rates and reflect the content’s tone — enhancing the channel’s visual identity and audience engagement.
+        </p>
+        <a href="https://drive.google.com/drive/folders/1JVAHi0jqdp_LyhuX_Iw0dqzfiBNawo-J" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/jacket.png');"></div>
+      <div class="project-content">
+        <h2>JACKET DESIGN</h2>
+        <p>
+          Designed a custom jacket layout blending aesthetic appeal with brand personality. 
+          The concept combined modern graphics, typography, and fabric texture visualization — delivering a bold and wearable design suited for merchandise, team apparel, or promotional branding.
+        </p>
+        <a href="https://drive.google.com/drive/folders/16KaPzrBL3wbvWxtNDuE8m4p4Bzkw8GP0" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+     <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/logo.jpg');"></div>
+      <div class="project-content">
+        <h2>LOGO DESIGN</h2>
+        <p>
+          Created distinctive and memorable logo designs that reflect brand identity through clean geometry, thoughtful symbolism, and balanced typography. 
+          Each logo was crafted to ensure versatility across digital and print media while maintaining a strong visual impact.
+        </p>
+        <a href="https://drive.google.com/drive/folders/1HKHXmaM6po55DBytPx4Ymc2i79wpLm1k" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/banner.jpg');"></div>
+      <div class="project-content">
+        <h2>BANNER DESIGN</h2>
+        <p>
+          Designed eye-catching banners tailored for digital and print platforms, combining bold visuals, strategic layout, and compelling messaging.
+         Each design was crafted to capture attention instantly, reinforce brand presence, and drive audience engagement across events, websites, and social media.
+        </p>
+        <a href="https://drive.google.com/drive/folders/1irZh0vGqzftchYcEikMwkDm0a2ckUwp1" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/id.jpg');"></div>
+      <div class="project-content">
+        <h2>I D CARD DESIGN</h2>
+        <p>
+          Designed clean and functional ID cards that balance aesthetic appeal with essential information layout.
+           Focused on readability, brand consistency, and security elements, each ID card was tailored for institutional and organizational use with precise attention to detail and professional finish.
+        </p>
+        <a href="https://drive.google.com/drive/folders/13oL5yVKu-jet7YAXbNiQUAsDSZtiI82j" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image" style="background-image: url('projectimg/poster.jpg');"></div>
+      <div class="project-content">
+        <h2>POSTER DESIGN</h2>
+        <p>
+          Created visually impactful posters that blend striking imagery, bold typography, and clear messaging to capture attention and communicate ideas effectively. 
+          Designed for events, promotions, and campaigns, each poster was tailored to resonate with its target audience and maintain strong visual hierarchy.
+        </p>
+        <a href="https://drive.google.com/drive/folders/1Xf0Ralr-VRKiyns3LNQzY9JEX4a6qy_Z" target="_blank">View Project →</a>
+      </div>
+    </div>
+
+    
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+        <h2>Kushal C J</h2>
+        <p style="font-size: 0.9rem; color: #a0a0a0;">Creative Designer & Developer | Turning ideas into visuals.</p>
+      </div>
+      <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+        <h4>Quick Links</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="design.html">Designs</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+        <h4>Connect with me</h4>
+        <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
+          <a href="https://www.instagram.com/kushxdiaries/" target="_blank"><img src="icons/ig icon.png" class="hficon">Instagram</a>
+          <a href="https://www.linkedin.com/in/kushal-c-j-454b7b267/" target="_blank"><img src="icons/lkn icon.png" class="hficon">LinkedIn</a>
+          <a href="mailto:kushalhsncj@gmail.com"><img src="icons/email logo.png" class="hficon">Email</a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p>&copy; 2025 Kushal C J. All rights reserved.</p>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

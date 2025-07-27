@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills - Kushal C J</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .bgvideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      opacity: 65%;
+    }
+
+    .bgvideo video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    body {
+      background-color: black;
+      color: #c5c6c7;
+      font-family: 'Poppins', sans-serif;
+      padding-top: 80px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 80px;
+      background-color: #27292b;
+      z-index: 1000;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      list-style: none;
+      margin: 0 32px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #c5c6c7;
+    }
+
+    nav ul li a:hover {
+      color: aqua;
+      font-size: 1.01rem;
+    }
+
+    .left {
+      color: aqua;
+      font-size: 1.7rem;
+    }
+
+    .right {
+      padding-left: 300px;
+    }
+
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .spaced-title {
+      letter-spacing: 0.25em;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: aqua;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+
+    .skill-box {
+      background-color: #1e1e1e;
+      padding: 20px 16px;
+      border-radius: 8px;
+      cursor: default;
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out,
+        background-color 0.3s ease,
+        color 0.3s ease;
+    }
+
+    .skill-box.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .skill-box:hover {
+      background-color: #c5c6c7;
+      color: black;
+      transform: translateY(0) scale(1.05);
+    }
+
+    .skill-box:hover p {
+      color: black;
+    }
+
+    .textboximg {
+      position: relative;
+      width: auto;
+      height: 120px;
+    }
+
+    footer {
+      background-color: #1e1e1e;
+      padding: 40px 20px;
+      color: #c5c6c7;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 60px;
+    }
+
+    footer .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    footer h2 {
+      color: aqua;
+      position: relative;
+      left: 5%;
+    }
+
+    footer h4 {
+      color: aqua;
+    }
+
+    footer a {
+      color: #c5c6c7;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: aqua;
+    }
+
+    footer .hficon {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    footer hr {
+      border: none;
+      border-top: 1px solid #444;
+      margin: 30px 0;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bgvideo">
+    <video src="bgvideo.mp4" muted loop autoplay playsinline></video>
+  </div>
+
+  <nav>
+    <div class="left">Kush's Portfolio</div>
+    <div class="right">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="design.html">Designs</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="section">
+    <h2 class="spaced-title">C I V I L &nbsp; O R I E N T E D</h2>
+    <div class="skills-grid">
+      <div class="skill-box"><img src="icons/Autocad.png" class="textboximg">
+        <p>AUTOCAD</p>
+      </div>
+      <div class="skill-box"><img src="icons/revit.png" class="textboximg">
+        <p>REVIT</p>
+      </div>
+      <div class="skill-box"><img src="icons/sketchup.png" class="textboximg">
+        <p>SKETCHUP</p>
+      </div>
+      <div class="skill-box"><img src="icons/staadpro.png" class="textboximg">
+        <p>STAAD PRO</p>
+      </div>
+      <div class="skill-box"><img src="icons/mathlib.png" class="textboximg">
+        <p>MATLAB</p>
+      </div>
+      <div class="skill-box"><img src="icons/Surfer.png" class="textboximg">
+        <p>SURFER</p>
+      </div>
+      <div class="skill-box"><img src="icons/3dcaed.png" class="textboximg">
+        <p>3D CAED</p>
+      </div>
+      <div class="skill-box"><img src="icons/navis.png" class="textboximg">
+        <p>NAVIS</p>
+      </div>
+    </div>
+
+    <div class="section">
+    <h2 class="spaced-title">P R O G R A M M I N G &nbsp; L A N G U A G E</h2>
+    <div class="skills-grid">
+      <div class="skill-box"><img src="icons/html.png" class="textboximg">
+        <p>HTML</p>
+      </div>
+      <div class="skill-box"><img src="icons/css.png" class="textboximg">
+        <p>CSS</p>
+      </div>
+      <div class="skill-box"><img src="icons/js.png" class="textboximg">
+        <p>JS</p>
+      </div>
+      <div class="skill-box"><img src="icons/python.png" class="textboximg">
+        <p>PYTHON</p>
+      </div>
+    </div>
+
+
+    <h2 class="spaced-title">D E S I G N &nbsp; O R I E N T E D</h2>
+    <div class="skills-grid">
+      <div class="skill-box"><img src="icons/photoshop.png" class="textboximg">
+        <p>ADOBE PHOTOSHOP</p>
+      </div>
+      <div class="skill-box"><img src="icons/illustrater.png" class="textboximg">
+        <p>ADOBE ILLUSTRATOR</p>
+      </div>
+      <div class="skill-box"><img src="icons/indesign.png" class="textboximg">
+        <p>ADOBE INDESIGN</p>
+      </div>
+      <div class="skill-box"><img src="icons/lighroom.png" class="textboximg">
+        <p>ADOBE LIGHTROOM</p>
+      </div>
+      <div class="skill-box"><img src="icons/canva.png" class="textboximg">
+        <p>CANVA</p>
+      </div>
+      <div class="skill-box"><img src="icons/figma.png" class="textboximg">
+        <p>FIGMA</p>
+      </div>
+      <div class="skill-box"><img src="icons/coreldraw.png" class="textboximg">
+        <p>CORELDRAW</p>
+      </div>
+      <div class="skill-box"><img src="icons/inkdraw.png" class="textboximg">
+        <p>INKSPACE</p>
+      </div>
+    </div>
+
+    <h2 class="spaced-title">V I D E O &nbsp; O R I E N T E D</h2>
+    <div class="skills-grid">
+      <div class="skill-box"><img src="icons/aftereffects.png" class="textboximg">
+        <p>AFTER EFFECTS</p>
+      </div>
+      <div class="skill-box"><img src="icons/prepro.png" class="textboximg">
+        <p>PREMIERE PRO</p>
+      </div>
+      <div class="skill-box"><img src="icons/davinci.png" class="textboximg">
+        <p>DAVINCE RESOLVE</p>
+      </div>
+      <div class="skill-box"><img src="icons/capcut.png" class="textboximg">
+        <p>CAP CUT</p>
+      </div>
+      <div class="skill-box"><img src="icons/blender.png" class="textboximg">
+        <p>BLENDER 3D</p>
+      </div>
+      <div class="skill-box"><img src="icons/animator.png" class="textboximg">
+        <p>ANIMATER</p>
+      </div>
+      <div class="skill-box"><img src="icons/audition.png" class="textboximg">
+        <p>AUDITION</p>
+      </div>
+      <div class="skill-box"><img src="icons/mediaencoder.png" class="textboximg">
+        <p>MEDIA ENCODER</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+        <h2>Kushal C J</h2>
+        <p style="font-size: 0.9rem; color: #a0a0a0;">Creative Designer & Developer | Turning ideas into visuals.</p>
+      </div>
+
+      <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+        <h4>Quick Links</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="design.html">Designs</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+        <h4>Connect with me</h4>
+        <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
+          <a href="https://www.instagram.com/kushxdiaries/" target="_blank"><img src="icons/ig icon.png"
+              class="hficon">Instagram</a>
+          <a href="https://www.linkedin.com/in/kushal-c-j-454b7b267/" target="_blank"><img src="icons/lkn icon.png"
+              class="hficon">LinkedIn</a>
+          <a href="mailto:kushalhsncj@gmail.com"><img src="icons/email logo.png" class="hficon">Email</a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p>&copy; 2025 Kushal C J. All rights reserved.</p>
+  </footer>
+
+  <!-- 👇 Scroll Animation Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.skill-box').forEach(box => {
+      observer.observe(box);
+    });
+  </script>
+
+</body>
+
+</html>
