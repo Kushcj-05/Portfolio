@@ -10,6 +10,7 @@
     * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
@@ -19,6 +20,7 @@
       padding-top: 80px;
     }
 
+    /* ===== Background Video ===== */
     .bgvideo {
       position: fixed;
       top: 0;
@@ -42,48 +44,105 @@
       object-fit: cover;
     }
 
+    /* ===== NAVBAR ===== */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       height: 80px;
       background-color: #27292b;
       z-index: 1000;
-    }
-
-    nav ul {
-      display: flex;
-      justify-content: center;
-    }
-
-    nav ul li {
-      list-style: none;
-      margin: 0 32px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #c5c6c7;
-    }
-
-    nav ul li a:hover {
-      color: aqua;
-      font-size: 1.01rem;
+      padding: 0 20px;
     }
 
     .left {
       color: aqua;
       font-size: 1.7rem;
+      font-weight: bold;
     }
 
-    .right {
-      padding-left: 300px;
+    nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
+    nav ul li {
+      list-style: none;
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #c5c6c7;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: aqua;
+    }
+
+    /* ===== Hamburger Toggle ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      z-index: 1101;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* ===== Mobile Styles ===== */
+    @media (max-width: 768px) {
+  nav {
+    flex-direction: row;        /* keep row direction */
+    justify-content: space-between; /* spread items */
+  }
+
+  .hamburger {
+    display: flex;
+    order: 1;    /* force hamburger to the left */
+  }
+
+  .left {
+    margin-left: auto;
+    order: 2;    /* force logo to the right */
+  }
+
+  .right ul {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: #1e1e1e;
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .right ul.active {
+    display: flex;
+  }
+
+  .right ul li {
+    margin: 15px 0;
+  }
+}
+
+
+    /* ===== CONTACT SECTION ===== */
     .contact-section {
       max-width: 700px;
       margin: 100px auto 40px;
@@ -148,6 +207,7 @@
       background-color: #00ffffcc;
     }
 
+    /* ===== FOOTER ===== */
     footer {
       background-color: #1e1e1e;
       padding: 40px 20px;
@@ -167,8 +227,6 @@
 
     footer h2 {
       color: aqua;
-      position: relative;
-      left: 5%;
     }
 
     footer h4 {
@@ -202,6 +260,7 @@
       color: #888;
     }
 
+    /* ===== Popup Confirmation ===== */
     #confirmationPopup {
       position: fixed;
       bottom: 30px;
@@ -237,7 +296,13 @@
     <video src="bgvideo.mp4" muted loop autoplay playsinline></video>
   </div>
 
+  <!-- ===== NAVBAR ===== -->
   <nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <div class="left">Kush's Portfolio</div>
     <div class="right">
       <ul>
@@ -251,6 +316,7 @@
     </div>
   </nav>
 
+  <!-- ===== CONTACT SECTION ===== -->
   <section class="contact-section">
     <h1>Contact Me</h1>
     <form id="contactForm">
@@ -264,6 +330,7 @@
     </div>
   </section>
 
+  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer-container">
       <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
@@ -284,8 +351,10 @@
       <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
         <h4>Connect with me</h4>
         <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
-          <a href="https://www.instagram.com/kushxdiaries/" target="_blank"><img src="icons/ig icon.png" class="hficon">Instagram</a>
-          <a href="https://www.linkedin.com/in/kushal-c-j-454b7b267/" target="_blank"><img src="icons/lkn icon.png" class="hficon">LinkedIn</a>
+          <a href="https://www.instagram.com/kushxdiaries/" target="_blank"><img src="icons/ig icon.png"
+              class="hficon">Instagram</a>
+          <a href="https://www.linkedin.com/in/kushal-c-j-454b7b267/" target="_blank"><img src="icons/lkn icon.png"
+              class="hficon">LinkedIn</a>
           <a href="mailto:kushalhsncj@gmail.com"><img src="icons/email logo.png" class="hficon">Email</a>
         </div>
       </div>
@@ -294,8 +363,12 @@
     <p>&copy; 2025 Kushal C J. All rights reserved.</p>
   </footer>
 
-  <!-- JS for Formspree Submission Without Redirect -->
+  <!-- ===== JS ===== -->
   <script>
+    function toggleMenu() {
+      document.querySelector(".right ul").classList.toggle("active");
+    }
+
     const form = document.getElementById("contactForm");
     const popup = document.getElementById("confirmationPopup");
 
