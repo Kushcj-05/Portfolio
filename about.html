@@ -8,194 +8,137 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: #f0f0f0;
-      background-color: #000;
-      overflow-x: hidden;
-    }
-
-    .bgvideo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      z-index: -2;
-    }
-
-    .bgvideo video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      opacity: 0.45;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 80px;
-      background-color: #27292b;
-      z-index: 10;
-    }
-
-    nav ul {
-      display: flex;
-      justify-content: center;
-    }
-
-    nav ul li {
-      list-style: none;
-      margin: 0 32px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #c5c6c7;
-    }
-
-    nav ul li a:hover {
-      color: aqua;
-      font-size: 1.01rem;
-    }
-
-    .left {
-      color: aqua;
-      font-size: 1.7rem;
-    }
-
-    .right {
-      padding-left: 300px;
-    }
-
-    .about-container {
-      margin-top: 120px;
-      max-width: 900px;
-      margin-inline: auto;
-      padding: 50px 40px;
-      background: rgba(50, 50, 50, 0.45);
-      border-radius: 20px;
-      backdrop-filter: blur(8px);
-      position: relative;
-      z-index: 1;
-      animation: fadeIn 1s ease-out forwards;
-    }
-
-    .about-container h1 {
-      font-size: 3rem;
-      letter-spacing: 3px;
-      margin-bottom: 25px;
-      color: aqua;
-    }
-
-    #animated-paragraph {
-      white-space: pre-wrap;
-    }
-
-    #animated-paragraph span {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.5s ease-out forwards;
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    footer {
-      background-color: #1e1e1e;
-      padding: 40px 20px;
-      color: #c5c6c7;
-      font-family: 'Poppins', sans-serif;
-      margin-top: 60px;
-    }
-
-    footer .footer-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    footer h2 {
-      color: aqua;
-      position: relative;
-      left: 5%;
-    }
-
-    footer h4 {
-      color: aqua;
-    }
-
-    footer a {
-      color: #c5c6c7;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: aqua;
-    }
-
-    footer .hficon {
-      height: 20px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
-
-    footer hr {
-      border: none;
-      border-top: 1px solid #444;
-      margin: 30px 0;
-    }
-
-    footer p {
-      text-align: center;
-      font-size: 0.8rem;
-      color: #888;
-    }
-    .about-container {
-  padding: 25px;
-  border-radius: 16px;
-  border: 2px solid rgba(0, 255, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  animation: glowEffect 2s ease-in-out infinite alternate;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(6px);
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #f0f0f0;
+  background-color: #000;
+  overflow-x: hidden;
+}
+
+/* Background Video */
+.bgvideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.bgvideo video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.45;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 80px;
+  background-color: #27292b;
+  z-index: 10;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  transition: max-height 0.4s ease-in-out;
+}
+
+nav ul li {
+  list-style: none;
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #c5c6c7;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: aqua;
+}
+
+.left {
+  color: aqua;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+/* About Container */
+.about-container {
+  margin-top: 120px;
+  max-width: 900px;
+  margin-inline: auto;
+  padding: 50px 40px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  animation: glowEffect 2s ease-in-out infinite alternate, fadeIn 1s ease-out forwards;
+}
+
+.about-container h1 {
+  font-size: 3rem;
+  letter-spacing: 3px;
+  margin-bottom: 25px;
+  color: aqua;
+  text-align: center;
+}
+
+#animated-paragraph {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+#animated-paragraph span {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+/* Animations */
 @keyframes glowEffect {
   0% {
     box-shadow: 0 0 12px rgba(0, 255, 255, 0.2),
@@ -209,6 +152,119 @@
   }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer */
+footer {
+  background-color: #1e1e1e;
+  padding: 40px 20px;
+  color: #c5c6c7;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 60px;
+}
+
+footer .footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: auto;
+}
+
+footer h2, footer h4, footer p, footer a {
+  text-align: left;
+}
+
+footer h2 { color: aqua; }
+footer h4 { color: aqua; }
+footer a { color: #c5c6c7; text-decoration: none; }
+footer a:hover { color: aqua; }
+
+footer .hficon {
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+footer hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 30px 0;
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between; /* hamburger left, logo right */
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .left {
+    order: 2; /* move logo to right */
+    font-size: 1.5rem;
+    margin-right: 15px;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #27292b;
+    flex-direction: column;
+    align-items: center; /* center nav links */
+    max-height: 0;
+    overflow: hidden;
+    padding: 10px 0;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  nav ul.active {
+    max-height: 500px;
+  }
+
+  nav ul li {
+    margin: 15px 0;
+  }
+
+  .about-container {
+    margin-top: 100px;
+    padding: 25px;
+  }
+
+  .about-container h1 {
+    font-size: 2rem;
+  }
+
+  #animated-paragraph {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  footer .footer-container {
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+
   </style>
 </head>
 
@@ -219,7 +275,16 @@
 
   <!-- Navigation -->
   <nav>
+    <!-- Hamburger button on left for mobile -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <div class="left">Kush's Portfolio</div>
+
+    <!-- Navigation links -->
     <div class="right">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -235,7 +300,7 @@
   <!-- About Section -->
   <div class="about-container">
     <h1>About Me</h1>
-    <p id="animated-paragraph" style="line-height: 2;">
+    <p id="animated-paragraph">
       Hi, I'm Kushal, a Civil Engineering undergraduate with a strong creative drive. While my academic foundation is rooted in engineering, I’ve developed a deep passion for the design and digital media space. I specialize in graphic design, enjoy crafting visually appealing web interfaces, and love working on front-end development. I'm also a skilled video editor, with a flair for storytelling through visuals and motion.
       Outside of academics and design, I enjoy dancing, experimenting with cinematic shoots, and diving into filmmaking and storytelling. These hobbies fuel my creativity and help me see design from a narrative perspective. I'm always eager to learn, collaborate, and push creative boundaries—whether in engineering, media, or digital art. My goal is to build engaging, meaningful experiences that leave a lasting impact.
     </p>
@@ -284,11 +349,14 @@
       text.forEach((word, index) => {
         const span = document.createElement("span");
         span.textContent = word;
-        span.style.marginRight = "6px"; // Add space between words
         span.style.animationDelay = `${index * 0.05}s`;
         para.appendChild(span);
       });
     });
+
+    function toggleMenu() {
+      document.querySelector("nav ul").classList.toggle("active");
+    }
   </script>
 </body>
 </html>
