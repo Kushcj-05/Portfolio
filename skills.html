@@ -51,40 +51,97 @@
       left: 0;
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       height: 80px;
       background-color: #27292b;
+      padding: 0 20px;
       z-index: 1000;
-    }
-
-    nav ul {
-      display: flex;
-      justify-content: center;
-    }
-
-    nav ul li {
-      list-style: none;
-      margin: 0 32px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #c5c6c7;
-    }
-
-    nav ul li a:hover {
-      color: aqua;
-      font-size: 1.01rem;
     }
 
     .left {
       color: aqua;
-      font-size: 1.7rem;
+      font-size: 1.4rem;
+      font-weight: 600;
     }
 
-    .right {
-      padding-left: 300px;
+    .right ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .right ul li {
+      list-style: none;
+      margin: 0 20px;
+    }
+
+    .right ul li a {
+      text-decoration: none;
+      color: #c5c6c7;
+    }
+
+    .right ul li a:hover {
+      color: aqua;
+      font-size: 1.01rem;
+    }
+
+    /* Hamburger toggle button */
+    .toggle-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .toggle-btn div {
+      width: 25px;
+      height: 3px;
+      background: #c5c6c7;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .toggle-btn {
+        display: flex;
+      }
+
+      .right {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #1e1e1e;
+        display: none;
+        flex-direction: column;
+        text-align: left;
+        padding: 15px 20px;
+      }
+
+      .right.active {
+        display: flex;
+      }
+
+      .right ul {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .right ul li {
+        margin: 12px 0;
+      }
+
+      footer .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      footer p {
+        text-align: left;
+      }
     }
 
     .section {
@@ -142,59 +199,70 @@
       height: 120px;
     }
 
-    footer {
-      background-color: #1e1e1e;
-      padding: 40px 20px;
-      color: #c5c6c7;
-      font-family: 'Poppins', sans-serif;
-      margin-top: 60px;
-    }
+footer {
+  background-color: #1e1e1e;
+  padding: 40px 20px;
+  color: #c5c6c7;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 60px;
+}
 
-    footer .footer-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-    }
+footer .footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Normal layout for desktop */
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: auto;
+  gap: 20px;
+}
 
-    footer h2 {
-      color: aqua;
-      position: relative;
-      left: 5%;
-    }
+footer h2,
+footer h4 {
+  color: aqua;
+  margin-bottom: 8px;
+}
 
-    footer h4 {
-      color: aqua;
-    }
+footer a {
+  color: #c5c6c7;
+  text-decoration: none;
+}
 
-    footer a {
-      color: #c5c6c7;
-      text-decoration: none;
-    }
+footer a:hover {
+  color: aqua;
+}
 
-    footer a:hover {
-      color: aqua;
-    }
+footer .hficon {
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
 
-    footer .hficon {
-      height: 20px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
+footer hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 30px 0;
+}
 
-    footer hr {
-      border: none;
-      border-top: 1px solid #444;
-      margin: 30px 0;
-    }
+footer p {
+  font-size: 0.8rem;
+  color: #888;
+  text-align: center; /* Default for desktop */
+}
 
-    footer p {
-      text-align: center;
-      font-size: 0.8rem;
-      color: #888;
-    }
+/* ✅ Mobile-only override */
+@media (max-width: 768px) {
+  footer .footer-container {
+    flex-direction: column;
+    align-items: flex-start; /* Align everything left */
+    text-align: left;
+  }
+
+  footer p {
+    text-align: left; /* Footer copyright also left */
+  }
+}
+
   </style>
 </head>
 
@@ -204,6 +272,11 @@
   </div>
 
   <nav>
+    <div class="toggle-btn" onclick="document.querySelector('.right').classList.toggle('active')">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <div class="left">Kush's Portfolio</div>
     <div class="right">
       <ul>
@@ -217,115 +290,59 @@
     </div>
   </nav>
 
+  <!-- 🔽 Your Skills Sections -->
   <div class="section">
     <h2 class="spaced-title">C I V I L &nbsp; O R I E N T E D</h2>
     <div class="skills-grid">
-      <div class="skill-box"><img src="icons/Autocad.png" class="textboximg">
-        <p>AUTOCAD</p>
-      </div>
-      <div class="skill-box"><img src="icons/revit.png" class="textboximg">
-        <p>REVIT</p>
-      </div>
-      <div class="skill-box"><img src="icons/sketchup.png" class="textboximg">
-        <p>SKETCHUP</p>
-      </div>
-      <div class="skill-box"><img src="icons/staadpro.png" class="textboximg">
-        <p>STAAD PRO</p>
-      </div>
-      <div class="skill-box"><img src="icons/mathlib.png" class="textboximg">
-        <p>MATLAB</p>
-      </div>
-      <div class="skill-box"><img src="icons/Surfer.png" class="textboximg">
-        <p>SURFER</p>
-      </div>
-      <div class="skill-box"><img src="icons/3dcaed.png" class="textboximg">
-        <p>3D CAED</p>
-      </div>
-      <div class="skill-box"><img src="icons/navis.png" class="textboximg">
-        <p>NAVIS</p>
-      </div>
+      <div class="skill-box"><img src="icons/Autocad.png" class="textboximg"><p>AUTOCAD</p></div>
+      <div class="skill-box"><img src="icons/revit.png" class="textboximg"><p>REVIT</p></div>
+      <div class="skill-box"><img src="icons/sketchup.png" class="textboximg"><p>SKETCHUP</p></div>
+      <div class="skill-box"><img src="icons/staadpro.png" class="textboximg"><p>STAAD PRO</p></div>
+      <div class="skill-box"><img src="icons/mathlib.png" class="textboximg"><p>MATLAB</p></div>
+      <div class="skill-box"><img src="icons/Surfer.png" class="textboximg"><p>SURFER</p></div>
+      <div class="skill-box"><img src="icons/3dcaed.png" class="textboximg"><p>3D CAED</p></div>
+      <div class="skill-box"><img src="icons/navis.png" class="textboximg"><p>NAVIS</p></div>
     </div>
 
-    <div class="section">
     <h2 class="spaced-title">P R O G R A M M I N G &nbsp; L A N G U A G E</h2>
     <div class="skills-grid">
-      <div class="skill-box"><img src="icons/html.png" class="textboximg">
-        <p>HTML</p>
-      </div>
-      <div class="skill-box"><img src="icons/css.png" class="textboximg">
-        <p>CSS</p>
-      </div>
-      <div class="skill-box"><img src="icons/js.png" class="textboximg">
-        <p>JS</p>
-      </div>
-      <div class="skill-box"><img src="icons/python.png" class="textboximg">
-        <p>PYTHON</p>
-      </div>
+      <div class="skill-box"><img src="icons/html.png" class="textboximg"><p>HTML</p></div>
+      <div class="skill-box"><img src="icons/css.png" class="textboximg"><p>CSS</p></div>
+      <div class="skill-box"><img src="icons/js.png" class="textboximg"><p>JS</p></div>
+      <div class="skill-box"><img src="icons/python.png" class="textboximg"><p>PYTHON</p></div>
     </div>
-
 
     <h2 class="spaced-title">D E S I G N &nbsp; O R I E N T E D</h2>
     <div class="skills-grid">
-      <div class="skill-box"><img src="icons/photoshop.png" class="textboximg">
-        <p>ADOBE PHOTOSHOP</p>
-      </div>
-      <div class="skill-box"><img src="icons/illustrater.png" class="textboximg">
-        <p>ADOBE ILLUSTRATOR</p>
-      </div>
-      <div class="skill-box"><img src="icons/indesign.png" class="textboximg">
-        <p>ADOBE INDESIGN</p>
-      </div>
-      <div class="skill-box"><img src="icons/lighroom.png" class="textboximg">
-        <p>ADOBE LIGHTROOM</p>
-      </div>
-      <div class="skill-box"><img src="icons/canva.png" class="textboximg">
-        <p>CANVA</p>
-      </div>
-      <div class="skill-box"><img src="icons/figma.png" class="textboximg">
-        <p>FIGMA</p>
-      </div>
-      <div class="skill-box"><img src="icons/coreldraw.png" class="textboximg">
-        <p>CORELDRAW</p>
-      </div>
-      <div class="skill-box"><img src="icons/inkdraw.png" class="textboximg">
-        <p>INKSPACE</p>
-      </div>
+      <div class="skill-box"><img src="icons/photoshop.png" class="textboximg"><p>ADOBE PHOTOSHOP</p></div>
+      <div class="skill-box"><img src="icons/illustrater.png" class="textboximg"><p>ADOBE ILLUSTRATOR</p></div>
+      <div class="skill-box"><img src="icons/indesign.png" class="textboximg"><p>ADOBE INDESIGN</p></div>
+      <div class="skill-box"><img src="icons/lighroom.png" class="textboximg"><p>ADOBE LIGHTROOM</p></div>
+      <div class="skill-box"><img src="icons/canva.png" class="textboximg"><p>CANVA</p></div>
+      <div class="skill-box"><img src="icons/figma.png" class="textboximg"><p>FIGMA</p></div>
+      <div class="skill-box"><img src="icons/coreldraw.png" class="textboximg"><p>CORELDRAW</p></div>
+      <div class="skill-box"><img src="icons/inkdraw.png" class="textboximg"><p>INKSPACE</p></div>
     </div>
 
     <h2 class="spaced-title">V I D E O &nbsp; O R I E N T E D</h2>
     <div class="skills-grid">
-      <div class="skill-box"><img src="icons/aftereffects.png" class="textboximg">
-        <p>AFTER EFFECTS</p>
-      </div>
-      <div class="skill-box"><img src="icons/prepro.png" class="textboximg">
-        <p>PREMIERE PRO</p>
-      </div>
-      <div class="skill-box"><img src="icons/davinci.png" class="textboximg">
-        <p>DAVINCE RESOLVE</p>
-      </div>
-      <div class="skill-box"><img src="icons/capcut.png" class="textboximg">
-        <p>CAP CUT</p>
-      </div>
-      <div class="skill-box"><img src="icons/blender.png" class="textboximg">
-        <p>BLENDER 3D</p>
-      </div>
-      <div class="skill-box"><img src="icons/animator.png" class="textboximg">
-        <p>ANIMATER</p>
-      </div>
-      <div class="skill-box"><img src="icons/audition.png" class="textboximg">
-        <p>AUDITION</p>
-      </div>
-      <div class="skill-box"><img src="icons/mediaencoder.png" class="textboximg">
-        <p>MEDIA ENCODER</p>
-      </div>
+      <div class="skill-box"><img src="icons/aftereffects.png" class="textboximg"><p>AFTER EFFECTS</p></div>
+      <div class="skill-box"><img src="icons/prepro.png" class="textboximg"><p>PREMIERE PRO</p></div>
+      <div class="skill-box"><img src="icons/davinci.png" class="textboximg"><p>DAVINCE RESOLVE</p></div>
+      <div class="skill-box"><img src="icons/capcut.png" class="textboximg"><p>CAP CUT</p></div>
+      <div class="skill-box"><img src="icons/blender.png" class="textboximg"><p>BLENDER 3D</p></div>
+      <div class="skill-box"><img src="icons/animator.png" class="textboximg"><p>ANIMATER</p></div>
+      <div class="skill-box"><img src="icons/audition.png" class="textboximg"><p>AUDITION</p></div>
+      <div class="skill-box"><img src="icons/mediaencoder.png" class="textboximg"><p>MEDIA ENCODER</p></div>
     </div>
   </div>
+  <!-- 🔼 End Skills Sections -->
 
   <footer>
     <div class="footer-container">
       <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
         <h2>Kushal C J</h2>
-        <p style="font-size: 0.9rem; color: #a0a0a0;">Creative Designer & Developer | Turning ideas into visuals.</p>
+        <p style="font-size: 0.9rem; color: #a0a0a0; text-align: left;">Creative Designer & Developer | Turning ideas into visuals.</p>
       </div>
 
       <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
@@ -343,10 +360,8 @@
       <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
         <h4>Connect with me</h4>
         <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
-          <a href="https://www.instagram.com/kushxdiaries/" target="_blank"><img src="icons/ig icon.png"
-              class="hficon">Instagram</a>
-          <a href="https://www.linkedin.com/in/kushal-c-j-454b7b267/" target="_blank"><img src="icons/lkn icon.png"
-              class="hficon">LinkedIn</a>
+          <a href="https://www.instagram.com/kushxdiaries/" target="_blank"><img src="icons/ig icon.png" class="hficon">Instagram</a>
+          <a href="https://www.linkedin.com/in/kushal-c-j-454b7b267/" target="_blank"><img src="icons/lkn icon.png" class="hficon">LinkedIn</a>
           <a href="mailto:kushalhsncj@gmail.com"><img src="icons/email logo.png" class="hficon">Email</a>
         </div>
       </div>
@@ -375,5 +390,4 @@
   </script>
 
 </body>
-
 </html>
